@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* Body  */
+
+body { 
+    margin: 0;
+    background-color: rgb(32, 32, 32);
+    box-sizing: border-box;
+    
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Reset  */
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Containers  */
+
+.grid-container {
+    margin: 0 auto;
+    height: 230px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 40px;
+}
+
+/* .flex-container {
+    position: relative;
+} */
+
+/* Header  */
+
+.header {
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+    height: 100px;
+
+    border-bottom: 5px solid rgb(187, 187, 187);
+    background-color:rgba(193, 232, 255, 0.212);
+
+    position: relative;
+
+    /* Центрирование по вертикали */
+    display: grid;
+    place-items: center;
+}
+
+.header__text {
+    color: rgb(214, 214, 214);
+
+    width: 200px;
+    height: auto;
+
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
+
+    /* Центрирование по горизонтали  */
+
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+/* Food  */
+
+.food-list__item {
+    position: relative; /* или static - важно чтобы не было fixed */
+    z-index: 100;
+}
+
+.food-list {
+    display: flex;
+    margin: 50px auto;
+}
+
+.food-list__image {
+    width: 200px;
+    height: 200px;
+    
+    background-color: rgb(102, 102, 102);
+    border: 4px solid rgb(187, 187, 187);
+    border-radius: 20px;
+
+    transition: all 0.1s ease 0.1s;
+}
+
+.food-list__name {
+    text-align: center;
+    color: rgb(214, 214, 214);
+    margin: 10px
+}
+
+/* Dog  */
+
+.dog {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    position: relative; /* Фиксируем позицию */
+    z-index: 0; /* Поднимаем над перетаскиваемыми элементами */
+
+    width: 400px;
+
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+.dog__image {
+
+    width: 400px;
+    border: 4px solid rgb(187, 187, 187);
+    border-radius: 20px;
+
+}
+
+.dog__text {
+    text-align: center;
+    color: rgb(214, 214, 214);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Hovers */
+
+.food-list__image:hover {
+    translate: -5px -5px;
+    opacity: .8;
+
+    /* cursor:grab; */
+}
+
+/* Help Message  */
+
+.help-message__container {
+    position: absolute;
+
+    display: flex;
+    margin: 0 auto;
+
+    left: 50%; 
+    transform: translateX(-50%);
+
+    top: 330px;
+
+    width: 500px;
+    height: 150px;
+
+    background-color:rgb(83, 83, 83);
+
+    border: 4px solid rgb(187, 187, 187);
+    border-radius: 20px;
+
+    animation: fadeInOut 4s ease-in-out;
+    animation-delay: 2s;
+    pointer-events: none;
+
+    opacity: 0;
+}
+
+.help-message__text {
+    margin: 15px;
+
+    font-size: 30px;
+    text-align: center;
+
+    color: rgb(214, 214, 214);
+}
+
+/* Intro Outro */
+
+.intro {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    z-index: 10000;
+
+    background-color: rgb(88, 88, 88);
+
+    opacity: 0;
+
+    animation: fadeOut 3s;
+    pointer-events: none;
+}
+
+.outro {
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+
+    top: 0%;
+
+    display: flex;
+    z-index: 1;
+
+    background-color: rgb(48, 48, 48);
+
+    opacity: 0;
+
+    overflow: hidden;
+
+}
+
+
+/* Animations  */
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    16.5%, 50% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0, 0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.outro-ready {
+    opacity: 1;
+
+    animation: fadeIn 5s;
+    pointer-events: none;
+}
+
+.video {
+    position: absolute;
+    
+    width: 50%;
+    height: 1000px;
+
+    margin: 100px auto;
+
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 10;
+
+    /* opacity:  */
+
+    animation: scaleIn 2s;
+
+    /* animation-delay: 3s; */
+    
+    /* background-color: rgb(255, 255, 255); */
+}
